@@ -8,7 +8,10 @@ const serverRender = async (req) => {
   const { contestId } = req.params;
 
   const initialData = contestId
-    ? { currentContest: await fetchContest(contestId) }
+    ? {
+        currentContest: await fetchContest(contestId),
+        contests: await fetchContestList(),
+      }
     : { contests: await fetchContestList() };
 
   const initialMarkup = ReactDOMServer.renderToString(

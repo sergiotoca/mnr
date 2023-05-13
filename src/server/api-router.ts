@@ -70,11 +70,11 @@ router.post("/contests/", async (req, res) => {
     names: [],
   });
 
-  const contest = await client
+  const newContest = await client
     .collection("contests")
     .findOne({ _id: doc.insertedId });
 
-  res.send({ contest });
+  res.send({ newContest });
 });
 
 export default router;

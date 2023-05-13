@@ -11,6 +11,10 @@ const App = ({ initialData }) => {
   const [currentContest, setCurrentContest] = useState<
     object | undefined
   >(initialData.currentContest);
+  
+  const [currentContestList, setCurrentContestList] = useState<
+    object | undefined
+  >(initialData.contests);
 
   useEffect(() => {
     window.onpopstate = (event) => {
@@ -46,6 +50,7 @@ const App = ({ initialData }) => {
     );
     setPage("contest");
     setCurrentContest(newContest);
+    setCurrentContestList([...currentContestList, newContest]);
   };
 
   const pageContent = () => {
@@ -54,7 +59,7 @@ const App = ({ initialData }) => {
         return (
           <>
             <ContestList
-              initialContests={initialData.contests}
+              initialContests={currentContestList}
               onContestClick={navigateToContest}
             />
             <AddNewContest onSuccess={onNewContest} />

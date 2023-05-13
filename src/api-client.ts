@@ -30,9 +30,8 @@ export const addNewNameToContest = async ({
 
 export const addContest = async (contestData) => {
   const resp = await axios.post(
-    `${API_SERVER_URL}/contests`,
+    `${API_SERVER_URL}/contests/`,
     contestData,
   );
-
   return resp.data.newContest;
 };
